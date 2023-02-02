@@ -1,6 +1,7 @@
-import { app } from 'electron';
+import { app, ipcMain } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
+import electronLocalshortcut from 'electron-localshortcut';
 
 const isProd: boolean = process.env.NODE_ENV === 'production';
 
@@ -25,6 +26,11 @@ if (isProd) {
     await mainWindow.loadURL(`http://localhost:${port}/home`);
     mainWindow.webContents.openDevTools();
   }
+
+  electronLocalshortcut.register(mainWindow, 'F12', () => {
+    console.log('F12 is pressed');
+    mainWindow.webContents.toggleDevTools();
+  });
 })();
 
 app.on('window-all-closed', () => {
