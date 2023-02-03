@@ -12,9 +12,6 @@ function ChatRoom() {
         <S.ChatRoomContentBox>
           <S.ChatRoomContentList>
             <ContentItem />
-            <ContentItem />
-            <ContentItem />
-            <ContentItem />
           </S.ChatRoomContentList>
         </S.ChatRoomContentBox>
         <S.ChatRoomFooterBox>
