@@ -9,22 +9,26 @@ interface LayoutProps {
   menuList: MenuList[];
 }
 
+const hiddenMenuPath = ['/login', '/signup', '/chat/[chat-room]'];
+
 function Layout({ children, menuList }: LayoutProps) {
-  const { asPath } = useRouter();
+  const { pathname } = useRouter();
   return (
     <S.Container>
-      <S.LayoutBox>
-        <S.LayoutList>
-          {menuList.map((item, idx) => (
-            <Menu
-              key={idx}
-              title={item.title}
-              path={item.path}
-              icon={item.icon}
-            />
-          ))}
-        </S.LayoutList>
-      </S.LayoutBox>
+      {hiddenMenuPath.includes(pathname) || (
+        <S.LayoutBox>
+          <S.LayoutList>
+            {menuList.map((item, idx) => (
+              <Menu
+                key={idx}
+                title={item.title}
+                path={item.path}
+                icon={item.icon}
+              />
+            ))}
+          </S.LayoutList>
+        </S.LayoutBox>
+      )}
       <S.LayoutChildrenBox>{children}</S.LayoutChildrenBox>
     </S.Container>
   );
