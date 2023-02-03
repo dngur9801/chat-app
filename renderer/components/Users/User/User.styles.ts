@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
-export const UserLayout = styled.div`
-  padding: 12px 0;
+export const UserList = styled.ul`
+  padding: 12px 30px;
 `;
-
-export const UserList = styled.ul``;
 
 export const UserItem = styled.li`
   display: flex;

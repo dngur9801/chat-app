@@ -13,6 +13,7 @@ function Chat() {
       />
       <S.ChatLayout>
         <ChatRoom />
+        <ChatRoom />
       </S.ChatLayout>
     </>
   );
