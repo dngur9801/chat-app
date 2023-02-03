@@ -1,7 +1,7 @@
 import React from 'react';
 import { CHAT_TITLE, USER_LIST_TEXT } from '../../constants';
 import Header from '../Common/Header/Header';
-import User from './User';
+import User from './User/User';
 import * as S from './Users.styles';
 
 function Users() {

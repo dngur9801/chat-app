@@ -1,3 +1,3 @@
 import styled from 'styled-components';
 
-export const UsersLayout = styled.div``;
+export const ChatLayout = styled.div``;

@@ -10,7 +10,7 @@ export const MenuItem = styled.li`
 
     svg {
       width: 100%;
-      font-size: 30px;
+      font-size: 20px;
     }
   }
 `;

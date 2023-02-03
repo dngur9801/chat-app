@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const HeaderLayout = styled.div``;
+export const HeaderLayout = styled.div`
+  margin-bottom: 50px;
+`;
 
 export const HeaderTitle = styled.p`
   font-weight: ${({ theme }) => theme.fontWeights.xl};
