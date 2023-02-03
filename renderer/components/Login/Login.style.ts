@@ -37,7 +37,7 @@ export const LoginInput = styled.input`
   width: 100%;
   margin-bottom: 5px;
   border: 1px solid #909090;
-  padding: 13px 30px;
+  padding: 13px ${({ theme }) => theme.basicPadding};
 `;
 
 export const LoginButton = styled.button`

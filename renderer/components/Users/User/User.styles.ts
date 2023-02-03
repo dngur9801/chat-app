@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const UserList = styled.ul`
-  padding: 12px 30px;
+  padding: 12px ${({ theme }) => theme.basicPadding};
 `;
 
 export const UserItem = styled.li`

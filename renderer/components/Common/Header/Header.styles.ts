@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderLayout = styled.div`
   margin-bottom: 50px;
-  padding: 30px 30px 0;
+  padding: 30px ${({ theme }) => theme.basicPadding} 0;
 `;
 
 export const HeaderTitle = styled.p`
