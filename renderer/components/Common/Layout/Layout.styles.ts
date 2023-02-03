@@ -13,4 +13,7 @@ export const LayoutBox = styled.div`
 
 export const LayoutList = styled.ul``;
 
-export const LayoutChildrenBox = styled.div``;
+export const LayoutChildrenBox = styled.div`
+  width: 100%;
+  padding: 30px 30px 0;
+`;

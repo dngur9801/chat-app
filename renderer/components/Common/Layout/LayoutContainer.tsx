@@ -1,12 +1,16 @@
 import React from 'react';
-import { FaUserFriends, FaComment, FaComments, FaTools } from 'react-icons/fa';
+import { FaUserFriends, FaComment, FaComments, FaWhmcs } from 'react-icons/fa';
 import {
   USERS_PATH,
-  CHAT_PATH,
   GROUP_CHAT_PATH,
   SETTING_PATH,
-  LOGIN_PATH,
-} from '../../../constants/path';
+  USER_LIST_TEXT,
+  GENERAL_CHAT_TEXT,
+  GROUP_CHAT_TEXT,
+  SETTING_TEXT,
+  CHAT_PATH,
+} from '../../../constants';
+
 import Layout from './Layout';
 
 export type ChildrenType = React.ReactNode;
@@ -23,24 +27,24 @@ interface LayoutContainerProps {
 
 const menuList: MenuList[] = [
   {
-    title: '유저 목록',
+    title: USER_LIST_TEXT,
     path: USERS_PATH,
     icon: () => <FaUserFriends />,
   },
   {
-    title: '1:1 채팅',
-    path: LOGIN_PATH,
+    title: GENERAL_CHAT_TEXT,
+    path: CHAT_PATH,
     icon: () => <FaComment />,
   },
   {
-    title: '그룹채팅',
+    title: GROUP_CHAT_TEXT,
     path: GROUP_CHAT_PATH,
     icon: () => <FaComments />,
   },
   {
-    title: '설정',
+    title: SETTING_TEXT,
     path: SETTING_PATH,
-    icon: () => <FaTools />,
+    icon: () => <FaWhmcs />,
   },
 ];
 

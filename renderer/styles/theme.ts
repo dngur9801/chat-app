@@ -20,7 +20,7 @@ const fontWeights = {
 };
 
 const colors = {
-  basic: '#6EF5F5',
+  basic: '#0befb8',
 };
 
 const backgroundColors = {};
@@ -28,8 +28,8 @@ const backgroundColors = {};
 export type CalcRemTypes = typeof calcRem;
 export type FontSizesTypes = typeof fontSizes;
 export type FontWeightsTypes = typeof fontWeights;
-export type BackgroundColors = typeof backgroundColors;
-export type Colors = typeof colors;
+export type BackgroundColorsTypes = typeof backgroundColors;
+export type ColorsTypes = typeof colors;
 
 export const theme: DefaultTheme = {
   calcRem,

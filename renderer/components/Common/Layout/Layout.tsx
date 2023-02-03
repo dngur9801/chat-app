@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 import * as S from './Layout.styles';
 import { ChildrenType, MenuList } from './LayoutContainer';
@@ -9,6 +10,7 @@ interface LayoutProps {
 }
 
 function Layout({ children, menuList }: LayoutProps) {
+  const { asPath } = useRouter();
   return (
     <S.Container>
       <S.LayoutBox>
