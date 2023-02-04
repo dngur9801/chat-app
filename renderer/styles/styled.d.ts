@@ -5,6 +5,7 @@ import {
   FontSizesTypes,
   FontWeightsTypes,
   BackgroundColorsTypes,
+  BasicPaddingTypes,
 } from './theme';
 
 declare module 'styled-components' {
@@ -14,5 +15,6 @@ declare module 'styled-components' {
     fontSizes: FontSizesTypes;
     fontWeights: FontWeightsTypes;
     backgroundColors: BackgroundColorsTypes;
+    basicPadding: BasicPaddingTypes;
   }
 }
