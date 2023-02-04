@@ -12,6 +12,8 @@ export const LoginInputBox = styled.div`
   }
 `;
 
+export const LoginForm = styled.form``;
+
 export const LoginInput = styled.input`
   width: 100%;
   margin-bottom: 5px;

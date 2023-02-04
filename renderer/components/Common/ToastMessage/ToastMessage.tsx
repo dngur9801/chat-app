@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { ToastMessageState } from '../../../states';
+import { toastMessageState } from '../../../states';
 import * as S from './ToastMessage.styles';
 
 interface Props {}
 
 const delay = 400;
 const ToastMessage = () => {
-  const [toastMessage, setToastMessage] = useRecoilState(ToastMessageState);
+  const [toastMessage, setToastMessage] = useRecoilState(toastMessageState);
   const [animation, setAnimation] = useState<
     'openAnimation' | 'closeAnimation'
   >('openAnimation');

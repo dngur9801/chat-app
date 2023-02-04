@@ -5,6 +5,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -18,12 +20,14 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 const app = initializeApp(firebaseConfig);
-const firebaseAuth = getAuth(app);
+const auth = getAuth(app);
 const db = getFirestore(app);
 
 export {
   db,
-  firebaseAuth,
+  auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
 };
