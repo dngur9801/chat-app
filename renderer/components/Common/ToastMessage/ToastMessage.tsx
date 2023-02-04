@@ -30,7 +30,7 @@ const ToastMessage = () => {
       clearTimeout(timer2);
       clearTimeout(timer3);
     };
-  }, []);
+  }, [toastMessage]);
 
   return (
     <S.ToastMessageBox delay={delay} className={animation}>

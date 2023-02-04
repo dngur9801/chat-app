@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import firebase from 'firebase/app';
-import {
-  auth,
-  browserSessionPersistence,
-  setPersistence,
-  signInWithEmailAndPassword,
-} from '../../config/firebaseConfig';
+import { useRouter } from 'next/router';
+
 import { toastMessageState, userInfoState } from '../../states';
 import Login from './Login';
-import { useRouter } from 'next/router';
 import { loginInitialValue } from '../../utils';
+import authAPI from '../apis/auth';
 
 function LoginContainer() {
   const [loginValue, setLoginValue] = useState(loginInitialValue());
@@ -27,7 +22,6 @@ function LoginContainer() {
     }));
   };
 
-  // TODO: 추후 코드 리팩토링
   const handleSubmitLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const { email, password } = loginValue;
@@ -35,30 +29,15 @@ function LoginContainer() {
       return setToastMessage('🚫 모든 항목을 입력해 주세요.');
     }
     try {
-      const curUserInfo = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      setUserInfo({
-        id: curUserInfo.user.email.split('@')[0],
-        uid: curUserInfo.user.uid,
-      });
+      const userData = await authAPI.login(email, password);
       setToastMessage('✅ 로그인이 완료되었습니다.');
+      setUserInfo({
+        id: userData.user.email.split('@')[0],
+        uid: userData.user.uid,
+      });
       router.push('/users');
     } catch (err) {
-      console.log(err);
-      switch (err.code) {
-        case 'auth/invalid-email':
-          setToastMessage('🚫 잘못된 이메일 주소 형식입니다.');
-          break;
-        case 'auth/user-not-found':
-          setToastMessage('🚫 가입된 이메일 주소가 아닙니다.');
-          break;
-        case 'auth/wrong-password':
-          setToastMessage('🚫 비밀번호를 잘못 입력하셨습니다.');
-          break;
-      }
+      setToastMessage(err.message);
     }
   };
   return (

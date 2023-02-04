@@ -9,14 +9,9 @@ import ToastMessage from '../Common/ToastMessage/ToastMessage';
 interface SignupProps {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleClickRegister: () => Promise<void>;
-  toastMessage: string | null;
 }
 
-function Signup({
-  handleChange,
-  handleClickRegister,
-  toastMessage,
-}: SignupProps) {
+function Signup({ handleChange, handleClickRegister }: SignupProps) {
   return (
     <AuthLayout>
       <S.SignupInput
@@ -45,7 +40,6 @@ function Signup({
           </Link>
         </S.SignupText>
       </S.SignupTextBox>
-      {toastMessage && <ToastMessage />}
     </AuthLayout>
   );
 }
