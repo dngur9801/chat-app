@@ -1,18 +1,4 @@
-export const signupInitialValue = () => ({
-  email: '',
-  password: '',
-  re_password: '',
-});
-
-export const loginInitialValue = () => ({
-  email: '',
-  password: '',
-});
-
-export const userInfoInitialValue = () => ({
-  uid: '',
-  id: '',
-});
+import dayjs from 'dayjs';
 
 export const changeErrorMessage = (message: string) => {
   switch (message) {
@@ -27,4 +13,12 @@ export const changeErrorMessage = (message: string) => {
     case 'auth/wrong-password':
       return '🚫 비밀번호를 잘못 입력하셨습니다.';
   }
+};
+
+export const getDate = () => {
+  const timeStamp = String(Date.now());
+  const date = dayjs(Number(timeStamp));
+  const nowDate = date.format('YYYY-MM-DD HH:mm:ss');
+
+  return nowDate;
 };

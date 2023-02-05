@@ -25,11 +25,14 @@ const colors = {
 
 const backgroundColors = {};
 
+const basicPadding = '30px';
+
 export type CalcRemTypes = typeof calcRem;
 export type FontSizesTypes = typeof fontSizes;
 export type FontWeightsTypes = typeof fontWeights;
 export type BackgroundColorsTypes = typeof backgroundColors;
 export type ColorsTypes = typeof colors;
+export type BasicPaddingTypes = typeof basicPadding;
 
 export const theme: DefaultTheme = {
   calcRem,
@@ -37,4 +40,5 @@ export const theme: DefaultTheme = {
   fontWeights,
   colors,
   backgroundColors,
+  basicPadding,
 };

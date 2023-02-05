@@ -4,11 +4,12 @@ import { useRouter } from 'next/router';
 
 import { toastMessageState, userInfoState } from '../../states';
 import Login from './Login';
-import { loginInitialValue } from '../../utils';
 import authAPI from '../apis/auth';
+import { ILoginValue } from '../../types';
+import roomsAPI from '../apis/rooms';
 
 function LoginContainer() {
-  const [loginValue, setLoginValue] = useState(loginInitialValue());
+  const [loginValue, setLoginValue] = useState<ILoginValue>({} as ILoginValue);
   const [toastMessage, setToastMessage] = useRecoilState(toastMessageState);
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
 
@@ -30,13 +31,16 @@ function LoginContainer() {
     }
     try {
       const userData = await authAPI.login(email, password);
+      const rooms = await authAPI.getUser(userData.user.uid);
       setToastMessage('✅ 로그인이 완료되었습니다.');
       setUserInfo({
-        id: userData.user.email.split('@')[0],
         uid: userData.user.uid,
+        email: userData.user.email,
+        nickName: userData.user?.email?.split('@')[0],
+        rooms: rooms && rooms.docs[0].data().rooms,
       });
       router.push('/users');
-    } catch (err) {
+    } catch (err: any) {
       setToastMessage(err.message);
     }
   };

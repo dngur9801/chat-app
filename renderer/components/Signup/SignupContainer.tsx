@@ -4,12 +4,14 @@ import { useRecoilState } from 'recoil';
 
 import { LOGIN_PATH } from '../../constants';
 import { toastMessageState } from '../../states';
-import { signupInitialValue } from '../../utils';
+import { ISignupValue } from '../../types';
 import authAPI from '../apis/auth';
 import Signup from './Signup';
 
 function SignupContainer() {
-  const [signupValue, setSignupValue] = useState(signupInitialValue());
+  const [signupValue, setSignupValue] = useState<ISignupValue>(
+    {} as ISignupValue
+  );
   const [toastMessage, setToastMessage] = useRecoilState(toastMessageState);
 
   const router = useRouter();
@@ -34,7 +36,7 @@ function SignupContainer() {
       await authAPI.createUser(email, password);
       setToastMessage('✅ 회원가입이 완료되었습니다.');
       router.push(LOGIN_PATH);
-    } catch (err) {
+    } catch (err: any) {
       setToastMessage(err.message);
     }
   };

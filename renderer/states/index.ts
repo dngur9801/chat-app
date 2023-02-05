@@ -1,12 +1,12 @@
 import { atom } from 'recoil';
-import { userInfoInitialValue } from '../utils';
+import { IUserInfo } from '../types';
 
-export const toastMessageState = atom({
+export const toastMessageState = atom<string | null>({
   key: 'toastMessageState',
   default: null,
 });
 
-export const userInfoState = atom({
+export const userInfoState = atom<IUserInfo | null>({
   key: 'userInfoState',
-  default: userInfoInitialValue(),
+  default: null,
 });
