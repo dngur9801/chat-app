@@ -5,7 +5,7 @@ import authAPI from '../components/apis/auth';
 
 import { IUserInfo } from '../types';
 
-function useUserList(myId: string) {
+function useFetchUsers(myId: string) {
   const [userList, setUserList] = useState<IUserInfo[] | null>(null);
 
   useEffect(() => {
@@ -19,4 +19,4 @@ function useUserList(myId: string) {
   return userList;
 }
 
-export default useUserList;
+export default useFetchUsers;

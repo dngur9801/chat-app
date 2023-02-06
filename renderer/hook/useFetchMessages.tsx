@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import messageAPI from '../components/apis/message';
 import { IMessage } from '../types';
 
-function useMessageList(roomId: string) {
+function useFetchMessages(roomId: string) {
   const [messageList, setMessageList] = useState<IMessage[] | null>(null);
   useEffect(() => {
     (async () => {
@@ -17,4 +17,4 @@ function useMessageList(roomId: string) {
   return { messageList, setMessageList };
 }
 
-export default useMessageList;
+export default useFetchMessages;

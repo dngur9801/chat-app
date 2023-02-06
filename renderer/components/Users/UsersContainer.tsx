@@ -3,7 +3,7 @@ import React from 'react';
 import { auth, db } from '../../config/firebaseConfig';
 import { userInfoState } from '../../states';
 import { useRecoilState } from 'recoil';
-import useUserList from '../../hook/useUserList';
+import useFetchUsers from '../../hook/useFetchUsers';
 import authAPI from '../apis/auth';
 import Users from './Users';
 import roomsAPI from '../apis/rooms';
@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 function UsersContainer() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const uid = userInfo?.uid;
-  const userList = useUserList(uid as string);
+  const userList = useFetchUsers(uid as string);
 
   const router = useRouter();
 
