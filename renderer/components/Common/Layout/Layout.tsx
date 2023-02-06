@@ -12,7 +12,7 @@ interface LayoutProps {
   menuList: MenuList[];
 }
 
-const hiddenMenuPath = ['/login', '/signup', '/chat/[chat-room]'];
+const hiddenMenuPath = ['/login', '/signup', '/chat/[chatRoom]'];
 
 function Layout({ children, menuList }: LayoutProps) {
   const [errorMessage, setErrorMessage] = useRecoilState(toastMessageState);

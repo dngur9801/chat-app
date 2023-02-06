@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-export const ContentItem = styled.li`
+export const ContentItem = styled.li<{ isMyMessage: boolean }>`
   display: flex;
   align-items: center;
-  /* justify-content: flex-end; */
-  height: 100px;
+  flex-direction: ${({ isMyMessage }) => (isMyMessage ? 'row-reverse' : 'row')};
 `;
 
 export const ContentItemImg = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 100%;
   background-color: green;
 `;
@@ -18,16 +17,18 @@ export const ContentItemBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 7px;
-  padding-top: 40px;
+  padding-top: 25px;
 `;
 
 export const ContentItemUserName = styled.div`
+  font-size: ${({ theme }) => theme.fontSizes.small};
   padding-bottom: 5px;
 `;
 
-export const ContentItemMessageBox = styled.div`
+export const ContentItemMessageBox = styled.div<{ isMyMessage: boolean }>`
   display: flex;
   align-items: flex-end;
+  flex-direction: ${({ isMyMessage }) => (isMyMessage ? 'row-reverse' : 'row')};
 `;
 
 export const ContentItemMessageText = styled.span`
@@ -37,21 +38,11 @@ export const ContentItemMessageText = styled.span`
   background-color: #0befb87a;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-
-  &::before {
-    border-bottom: 8px solid transparent;
-    border-left: 8px solid #0befb87a;
-    border-right: 8px solid transparent;
-    border-top: 8px solid transparent;
-    content: '';
-    position: absolute;
-    top: -6px;
-    left: 0px;
-  }
+  font-size: ${({ theme }) => theme.fontSizes.base};
 `;
 
 export const ContentItemDate = styled.div`
   margin: 0 5px;
-  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-size: ${({ theme }) => theme.fontSizes.xs};
   color: #909090;
 `;
