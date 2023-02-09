@@ -56,11 +56,11 @@ const authAPI = {
   },
 
   // 나를 제외한 전체 유저리스트 가져옴
-  async getUserList(myId: string) {
+  async getUserList(uid: string) {
     try {
       const q = query(
         collection(db, this.collectionName),
-        where('uid', '!=', myId)
+        where('uid', '!=', uid)
       );
       return await getDocs(q);
     } catch (err: any) {

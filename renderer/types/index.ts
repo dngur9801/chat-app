@@ -17,10 +17,18 @@ export interface IUserInfo {
 export interface IMessage {
   roomId: string;
   content: string;
-  timestamp: string;
+  date: string;
   user: {
     avartar: string;
     uid: string;
     nickName: string;
   };
+}
+export interface IRoom {
+  id: string;
+  type: string;
+  lastContent: string;
+  lastDate: string;
+  partnerNickName: string;
+  users: string[];
 }

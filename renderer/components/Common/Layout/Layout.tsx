@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { toastMessageState } from '../../../states';
+import { auth } from '../../../config/firebaseConfig';
+import { toastMessageState, userInfoState } from '../../../states';
 import ToastMessage from '../ToastMessage/ToastMessage';
 import * as S from './Layout.styles';
 import { ChildrenType, MenuList } from './LayoutContainer';
@@ -15,11 +16,22 @@ interface LayoutProps {
 const hiddenMenuPath = ['/login', '/signup', '/chat/[chatRoom]'];
 
 function Layout({ children, menuList }: LayoutProps) {
+  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const [errorMessage, setErrorMessage] = useRecoilState(toastMessageState);
   const { pathname } = useRouter();
+  const isHiddenMenu = hiddenMenuPath.includes(pathname);
+
+  const router = useRouter();
+  // 로그인 여부 값
+  useEffect(() => {
+    if (!userInfo?.uid) {
+      router.push('/login');
+    }
+  }, []);
+
   return (
     <S.Container>
-      {hiddenMenuPath.includes(pathname) || (
+      {isHiddenMenu || (
         <S.LayoutBox>
           <S.LayoutList>
             {menuList.map((item, idx) => (
@@ -33,7 +45,9 @@ function Layout({ children, menuList }: LayoutProps) {
           </S.LayoutList>
         </S.LayoutBox>
       )}
-      <S.LayoutChildrenBox>{children}</S.LayoutChildrenBox>
+      <S.LayoutChildrenBox isHiddenMenu={isHiddenMenu}>
+        {children}
+      </S.LayoutChildrenBox>
       {errorMessage && <ToastMessage />}
     </S.Container>
   );

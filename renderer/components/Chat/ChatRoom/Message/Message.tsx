@@ -6,7 +6,7 @@ import * as S from './Message.styles';
 
 interface MessageProps {
   content: string;
-  timestamp: string;
+  date: string;
   user: {
     avartar: string;
     nickName: string;
@@ -16,7 +16,7 @@ interface MessageProps {
 
 function Message({
   content,
-  timestamp,
+  date,
   user: { avartar, nickName, uid },
 }: MessageProps) {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
@@ -28,7 +28,7 @@ function Message({
         {!isMyMessage && <S.MessageUserName>{nickName}</S.MessageUserName>}
         <S.MessageMessageBox isMyMessage={isMyMessage}>
           <S.MessageMessageText>{content}</S.MessageMessageText>
-          <S.MessageDate>{timestamp}</S.MessageDate>
+          <S.MessageDate>{date}</S.MessageDate>
         </S.MessageMessageBox>
       </S.MessageBox>
     </S.MessageLayout>

@@ -22,3 +22,11 @@ export const getDate = () => {
 
   return nowDate;
 };
+
+export const getRandomBgColor = () => {
+  const red = Math.floor(Math.random() * 128 + 128);
+  const green = Math.floor(Math.random() * 128 + 128);
+  const blue = Math.floor(Math.random() * 128 + 128);
+  const bgcolor = `rgb(${red},${green},${blue})`;
+  return bgcolor;
+};

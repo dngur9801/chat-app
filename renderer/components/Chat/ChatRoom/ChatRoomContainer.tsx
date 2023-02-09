@@ -6,6 +6,7 @@ import { useRecoilState } from 'recoil';
 import useFetchMessages from '../../../hook/useFetchMessages';
 import { userInfoState } from '../../../states';
 import messageAPI from '../../apis/messages';
+import roomsAPI from '../../apis/rooms';
 import ChatRoom from './ChatRoom';
 
 function ChatRoomContainer() {
@@ -19,6 +20,7 @@ function ChatRoomContainer() {
   const roomId = router.query.chatRoom;
 
   const { messageList, setMessageList } = useFetchMessages(roomId as string);
+
   const handleSubmitMessage = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
@@ -32,7 +34,11 @@ function ChatRoomContainer() {
       userInfo?.nickName as string,
       roomId as string
     );
-
+    await roomsAPI.setLastContent(
+      roomId as string,
+      content,
+      message?.data()?.date
+    );
     setMessageList([...(messageList as any), { ...message?.data() }]);
   };
 

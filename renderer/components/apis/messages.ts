@@ -25,7 +25,7 @@ const messageAPI = {
       const messageRef = await addDoc(collection(db, this.collectionName), {
         roomId,
         content,
-        timestamp: getDate(),
+        date: getDate(),
         user: {
           avartar: '',
           uid,
@@ -39,12 +39,13 @@ const messageAPI = {
     }
   },
 
+  // 해당하는 채팅방 메세지 가져옴
   async getMessages(roomId: string) {
     try {
       const q = query(
         collection(db, this.collectionName),
         where('roomId', '==', roomId),
-        orderBy('timestamp', 'asc')
+        orderBy('date', 'asc')
       );
       return await getDocs(q);
     } catch (err) {

@@ -1,16 +1,41 @@
 import React from 'react';
+import { getRandomBgColor } from '../../../../utils';
 import * as S from './ChatItem.styles';
 
-function ChatItem() {
+interface ChatItemProps {
+  roomId: string;
+  roomType: string;
+  lastContent: string;
+  lastDate: string;
+  partnerNickName: string;
+  handleClickMoveChatRoom: (
+    roomId: string,
+    type: string,
+    title: string
+  ) => void;
+}
+
+function ChatItem({
+  roomId,
+  roomType,
+  lastContent,
+  lastDate,
+  partnerNickName,
+  handleClickMoveChatRoom,
+}: ChatItemProps) {
   return (
-    <S.ChatItemList>
+    <S.ChatItemList
+      onClick={() => handleClickMoveChatRoom(roomId, roomType, partnerNickName)}
+    >
       <S.ChatItemItem>
-        <S.ChatItemProfileBox></S.ChatItemProfileBox>
+        <S.ChatItemProfileBox bgColor={getRandomBgColor()}>
+          {partnerNickName[0]}
+        </S.ChatItemProfileBox>
         <S.ChatItemBox>
-          <S.ChatItemNameText>dngur9801</S.ChatItemNameText>
-          <S.ChatItemMessageText>안녕하세요</S.ChatItemMessageText>
+          <S.ChatItemNameText>{partnerNickName}</S.ChatItemNameText>
+          <S.ChatItemMessageText>{lastContent}</S.ChatItemMessageText>
         </S.ChatItemBox>
-        <S.ChatItemDate>2023.01.02</S.ChatItemDate>
+        <S.ChatItemDate>{lastDate.split(' ')[0]}</S.ChatItemDate>
       </S.ChatItemItem>
     </S.ChatItemList>
   );

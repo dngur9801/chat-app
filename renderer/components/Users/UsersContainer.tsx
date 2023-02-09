@@ -13,7 +13,6 @@ function UsersContainer() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const uid = userInfo?.uid;
   const userList = useFetchUsers(uid as string);
-
   const router = useRouter();
 
   const handleClickCreateChat = async (partnerUid: string) => {

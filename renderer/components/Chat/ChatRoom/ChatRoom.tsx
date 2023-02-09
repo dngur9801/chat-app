@@ -33,7 +33,7 @@ function ChatRoom({
                 <Message
                   key={idx}
                   content={item.content}
-                  timestamp={item.timestamp}
+                  date={item.date}
                   user={item.user}
                 />
               ))}

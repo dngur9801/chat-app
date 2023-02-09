@@ -7,6 +7,7 @@ import {
   DocumentReference,
   getDocs,
   limit,
+  orderBy,
   query,
   QueryDocumentSnapshot,
   updateDoc,
@@ -20,11 +21,13 @@ const roomsAPI = {
   // 채팅방 생성
   async createRoom(uid: string, partnerUid: string) {
     try {
-      const existRoomId = await this.findExistPersonalChatRoom(uid, partnerUid);
+      const existRoomId = await this.findExistPersonalRoom(uid, partnerUid);
       if (existRoomId) return existRoomId;
       const roomRef = await addDoc(collection(db, this.collectionName), {
         users: [uid, partnerUid],
         type: 'personal',
+        lastContent: '',
+        lastDate: '',
       });
       await this.userIntoRoom([uid, partnerUid], roomRef);
 
@@ -50,26 +53,58 @@ const roomsAPI = {
   },
 
   // 상대와의 채팅방이 이미 생성되어있는지 체크
-  async findExistPersonalChatRoom(uid: string, partnerUid: string) {
-    const personalChatRoomRef = collection(db, this.collectionName);
+  async findExistPersonalRoom(uid: string, partnerUid: string) {
+    try {
+      const personalRoomRef = collection(db, this.collectionName);
+      const q = query(
+        personalRoomRef,
+        where('users', 'in', [
+          [uid, partnerUid],
+          [partnerUid, uid],
+        ]),
+        limit(1)
+      );
+      const docs = await getDocs(q);
 
-    const q = query(
-      personalChatRoomRef,
-      where('users', 'in', [
-        [uid, partnerUid],
-        [partnerUid, uid],
-      ]),
-      limit(1)
-    );
-    const docs = await getDocs(q);
+      const rooms: QueryDocumentSnapshot<DocumentData>[] = [];
 
-    const rooms: QueryDocumentSnapshot<DocumentData>[] = [];
+      docs.forEach(room => {
+        rooms.push(room);
+      });
 
-    docs.forEach(room => {
-      rooms.push(room);
-    });
+      return rooms[0]?.id;
+    } catch (err) {
+      console.error(err);
+    }
+  },
 
-    return rooms[0]?.id;
+  // 마지막 채팅내용과 날짜저장
+  async setLastContent(roomId: string, content: string, date: string) {
+    try {
+      const docRef = doc(db, this.collectionName, roomId);
+      const docs = await updateDoc(docRef, {
+        lastContent: content,
+        lastDate: date,
+      });
+      return docs;
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  // 진행중인 채팅방 가져옴
+  async getRooms(uid: string) {
+    try {
+      const q = query(
+        collection(db, this.collectionName),
+        where('users', 'array-contains', uid)
+        // where('type', '==', 'personal'),
+        // orderBy('date', 'desc')
+      );
+      return await getDocs(q);
+    } catch (err) {
+      console.error(err);
+    }
   },
 };
 export default roomsAPI;

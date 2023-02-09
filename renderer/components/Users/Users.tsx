@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import React from 'react';
-import { auth } from '../../config/firebaseConfig';
 import { CHAT_TITLE, USER_LIST_TEXT } from '../../constants';
 import { IUserInfo } from '../../types';
 import Header from '../Common/Header/Header';
@@ -21,7 +19,7 @@ function Users({ userList, handleClickCreateChat }: UsersProps) {
         description={`현재 ${CHAT_TITLE}을 이용중인 유저 목록 입니다.\n 원하시는 상대에게 채팅을 요청해보세요!`}
       />
       <S.UsersLayout>
-        {(userList || []).map(item => (
+        {userList?.map(item => (
           <User
             key={item.uid}
             nickName={item.nickName}
@@ -36,9 +34,6 @@ function Users({ userList, handleClickCreateChat }: UsersProps) {
               <br /> 채팅을 요청할 수 없습니다. 😂
             </NotResultMessage>
           ))}
-        <Link href={'/chat/23'}>
-          <a>go chatroom</a>
-        </Link>
       </S.UsersLayout>
     </>
   );

@@ -9,11 +9,14 @@ export const UserItem = styled.li`
   align-items: center;
 `;
 
-export const UserProfileBox = styled.div`
+export const UserProfileBox = styled.div<{ bgColor: string }>`
   width: 50px;
   height: 50px;
   border-radius: 100%;
-  background-color: red;
+  line-height: 50px;
+  font-size: ${({ theme }) => theme.fontSizes.lg};
+  text-align: center;
+  background-color: ${({ bgColor }) => bgColor};
 `;
 
 export const UserNameText = styled.span`

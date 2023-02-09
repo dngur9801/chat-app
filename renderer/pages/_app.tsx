@@ -14,16 +14,14 @@ import authAPI from '../components/apis/auth';
 import { auth } from '../config/firebaseConfig';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const isLoggendIn = auth.currentUser;
   const router = useRouter();
   // 로그인 여부 값
-  const isLoggendIn = auth.currentUser;
-
-  console.log('isLoggendIn : ', isLoggendIn);
   useEffect(() => {
     if (!isLoggendIn) {
       router.push('/login');
     }
-  }, [isLoggendIn]);
+  }, []);
   return (
     <>
       <Head>
