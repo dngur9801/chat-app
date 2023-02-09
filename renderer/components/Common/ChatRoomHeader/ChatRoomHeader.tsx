@@ -3,7 +3,11 @@ import * as S from './ChatRoomHeader.styles';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 
-function ChatRoomHeader() {
+interface ChatRoomHeaderProps {
+  subject: string;
+}
+
+function ChatRoomHeader({ subject }: ChatRoomHeaderProps) {
   const router = useRouter();
   const title = router.query?.title;
   return (
@@ -11,7 +15,7 @@ function ChatRoomHeader() {
       <S.ChatRoomHeaderButton onClick={() => router.back()}>
         <FaArrowLeft />
       </S.ChatRoomHeaderButton>
-      <S.ChatRoomHeaderTitle>{title}</S.ChatRoomHeaderTitle>
+      <S.ChatRoomHeaderTitle>{title || subject}</S.ChatRoomHeaderTitle>
     </S.ChatRoomHeaderBox>
   );
 }

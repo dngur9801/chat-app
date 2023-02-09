@@ -13,7 +13,12 @@ interface LayoutProps {
   menuList: MenuList[];
 }
 
-const hiddenMenuPath = ['/login', '/signup', '/chat/[chatRoom]'];
+const hiddenMenuPath = [
+  '/login',
+  '/signup',
+  '/chat/[chatRoom]',
+  '/group-chat/create',
+];
 
 function Layout({ children, menuList }: LayoutProps) {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);

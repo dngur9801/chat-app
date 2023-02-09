@@ -7,11 +7,12 @@ import { IRoom } from '../types';
 function useFetchChatRooms(myId: string) {
   const [chatRoomList, setChatRoomList] = useState<IRoom[] | null>(null);
 
-  const getPartnerNickNameObj = async (room: IRoom) => {
+  const getPartnerInfo = async (room: IRoom) => {
     const partnerId = room.users.filter((item: string) => item !== myId)[0];
     const partnerData = await authAPI.getUser(partnerId);
     const partnerNickName = partnerData?.data()?.nickName;
-    const updatedPartnerNickObj = { ...room, partnerNickName };
+    const partnerAvatar = partnerData?.data()?.avatar;
+    const updatedPartnerNickObj = { ...room, partnerNickName, partnerAvatar };
     return updatedPartnerNickObj;
   };
 
@@ -24,7 +25,7 @@ function useFetchChatRooms(myId: string) {
         newChatRoomList.push(room);
       });
       const updatedPartnerNickObj = await Promise.all(
-        newChatRoomList.map(email => getPartnerNickNameObj(email))
+        newChatRoomList.map(email => getPartnerInfo(email))
       );
       setChatRoomList(updatedPartnerNickObj);
     })();

@@ -8,6 +8,7 @@ interface ChatItemProps {
   lastContent: string;
   lastDate: string;
   partnerNickName: string;
+  partnerAvatar: string;
   handleClickMoveChatRoom: (
     roomId: string,
     type: string,
@@ -20,6 +21,7 @@ function ChatItem({
   roomType,
   lastContent,
   lastDate,
+  partnerAvatar,
   partnerNickName,
   handleClickMoveChatRoom,
 }: ChatItemProps) {
@@ -28,7 +30,7 @@ function ChatItem({
       onClick={() => handleClickMoveChatRoom(roomId, roomType, partnerNickName)}
     >
       <S.ChatItemItem>
-        <S.ChatItemProfileBox bgColor={getRandomBgColor()}>
+        <S.ChatItemProfileBox bgColor={partnerAvatar}>
           {partnerNickName[0]}
         </S.ChatItemProfileBox>
         <S.ChatItemBox>

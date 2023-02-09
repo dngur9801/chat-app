@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const GroupChatRoomList = styled.ul`
+export const GroupChatItemList = styled.ul`
   padding: 12px ${({ theme }) => theme.basicPadding};
   cursor: pointer;
   &:hover {
@@ -8,46 +8,46 @@ export const GroupChatRoomList = styled.ul`
   }
 `;
 
-export const GroupChatRoomItem = styled.li`
+export const GroupChatItem = styled.li`
   display: flex;
   align-items: center;
 `;
 
-export const GroupChatRoomProfileBox = styled.div`
+export const GroupChatItemProfileBox = styled.div`
   width: 50px;
   height: 50px;
   border-radius: 100%;
   background-color: red;
 `;
 
-export const GroupChatRoomBox = styled.div`
+export const GroupChatItemBox = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   padding-left: 20px;
 `;
 
-export const GroupChatRoomNameBox = styled.div`
+export const GroupChatItemNameBox = styled.div`
   display: flex;
   padding-bottom: 8px;
 `;
 
-export const GroupChatRoomNameText = styled.span`
+export const GroupChatItemNameText = styled.span`
   font-weight: ${({ theme }) => theme.fontWeights.lg};
   font-size: ${({ theme }) => theme.fontSizes.base};
 `;
 
-export const GroupChatRoomTotalPeople = styled(GroupChatRoomNameText)`
+export const GroupChatItemTotalPeople = styled(GroupChatItemNameText)`
   padding-left: 7px;
   color: #909090;
 `;
 
-export const GroupChatRoomMessageText = styled.span`
+export const GroupChatItemMessageText = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.small};
   color: #909090;
 `;
 
-export const GroupChatRoomDate = styled.div`
+export const GroupChatItemDate = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.small};
   color: #909090;
 `;

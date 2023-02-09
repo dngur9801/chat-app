@@ -24,6 +24,7 @@ function Users({ userList, handleClickCreateChat }: UsersProps) {
             key={item.uid}
             nickName={item.nickName}
             uid={item.uid}
+            avatar={item.avatar}
             handleClickCreateChat={handleClickCreateChat}
           />
         ))}

@@ -14,7 +14,7 @@ import {
   db,
   signInWithEmailAndPassword,
 } from '../../config/firebaseConfig';
-import { changeErrorMessage } from '../../utils';
+import { changeErrorMessage, getRandomBgColor } from '../../utils';
 
 const authAPI = {
   collectionName: 'users' as const,
@@ -40,6 +40,7 @@ const authAPI = {
         email,
         nickName: email?.split('@')[0],
         rooms: [],
+        avatar: getRandomBgColor(),
       });
     } catch (err) {
       console.error(err);

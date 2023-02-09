@@ -1,8 +1,8 @@
 import React from 'react';
-import GroupChatContainer from '../../components/GroupChat/GroupChatContainer';
+import GroupChatListContainer from '../../components/GroupChat/GroupChatList/GroupChatListContainer';
 
-function groupChat() {
-  return <GroupChatContainer />;
+function groupChatList() {
+  return <GroupChatListContainer />;
 }
 
-export default groupChat;
+export default groupChatList;

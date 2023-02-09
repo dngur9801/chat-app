@@ -11,6 +11,7 @@ export interface IUserInfo {
   uid: string;
   email: string;
   nickName: string;
+  avatar: string;
   rooms: number[];
 }
 
@@ -30,5 +31,6 @@ export interface IRoom {
   lastContent: string;
   lastDate: string;
   partnerNickName: string;
+  partnerAvatar: string;
   users: string[];
 }

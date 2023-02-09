@@ -30,6 +30,7 @@ function ChatList({ chatRoomList, handleClickMoveChatRoom }: ChatListProps) {
             roomType={item.type}
             lastContent={item.lastContent}
             lastDate={item.lastDate}
+            partnerAvatar={item.partnerAvatar}
             partnerNickName={item.partnerNickName}
             handleClickMoveChatRoom={handleClickMoveChatRoom}
           />
