@@ -5,12 +5,13 @@ import { useRouter } from 'next/router';
 
 function ChatRoomHeader() {
   const router = useRouter();
+  const title = router.query?.title;
   return (
     <S.ChatRoomHeaderBox>
       <S.ChatRoomHeaderButton onClick={() => router.back()}>
         <FaArrowLeft />
       </S.ChatRoomHeaderButton>
-      <S.ChatRoomHeaderTitle>제목 입니다.</S.ChatRoomHeaderTitle>
+      <S.ChatRoomHeaderTitle>{title}</S.ChatRoomHeaderTitle>
     </S.ChatRoomHeaderBox>
   );
 }

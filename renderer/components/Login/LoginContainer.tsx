@@ -31,13 +31,13 @@ function LoginContainer() {
     }
     try {
       const userData = await authAPI.login(email, password);
-      const rooms = await authAPI.getUser(userData.user.uid);
+      const user = await authAPI.getUser(userData.user.uid);
       setToastMessage('✅ 로그인이 완료되었습니다.');
       setUserInfo({
         uid: userData.user.uid,
-        email: userData.user.email,
-        nickName: userData.user?.email?.split('@')[0],
-        rooms: rooms && rooms.docs[0].data().rooms,
+        email: userData.user.email as string,
+        nickName: userData.user?.email?.split('@')[0] as string,
+        rooms: user && user.data()?.rooms,
       });
       router.push('/users');
     } catch (err: any) {

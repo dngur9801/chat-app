@@ -1,12 +1,17 @@
 import { atom } from 'recoil';
 import { IUserInfo } from '../types';
 
-export const toastMessageState = atom<string | null>({
+export const toastMessageState = atom<string>({
   key: 'toastMessageState',
-  default: null,
+  default: '',
 });
 
-export const userInfoState = atom<IUserInfo | null>({
+export const userInfoState = atom<IUserInfo>({
   key: 'userInfoState',
-  default: null,
+  default: {
+    uid: '',
+    email: '',
+    nickName: '',
+    rooms: [],
+  },
 });

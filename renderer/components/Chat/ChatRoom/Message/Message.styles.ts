@@ -1,37 +1,37 @@
 import styled from 'styled-components';
 
-export const ContentItem = styled.li<{ isMyMessage: boolean }>`
+export const MessageLayout = styled.li<{ isMyMessage: boolean }>`
   display: flex;
   align-items: center;
   flex-direction: ${({ isMyMessage }) => (isMyMessage ? 'row-reverse' : 'row')};
 `;
 
-export const ContentItemImg = styled.div`
+export const MessageImg = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 100%;
   background-color: green;
 `;
 
-export const ContentItemBox = styled.div`
+export const MessageBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 7px;
   padding-top: 25px;
 `;
 
-export const ContentItemUserName = styled.div`
+export const MessageUserName = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.small};
   padding-bottom: 5px;
 `;
 
-export const ContentItemMessageBox = styled.div<{ isMyMessage: boolean }>`
+export const MessageMessageBox = styled.div<{ isMyMessage: boolean }>`
   display: flex;
   align-items: flex-end;
   flex-direction: ${({ isMyMessage }) => (isMyMessage ? 'row-reverse' : 'row')};
 `;
 
-export const ContentItemMessageText = styled.span`
+export const MessageMessageText = styled.span`
   position: relative;
   display: inline-block;
   padding: 12px;
@@ -41,7 +41,7 @@ export const ContentItemMessageText = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.base};
 `;
 
-export const ContentItemDate = styled.div`
+export const MessageDate = styled.div`
   margin: 0 5px;
   font-size: ${({ theme }) => theme.fontSizes.xs};
   color: #909090;

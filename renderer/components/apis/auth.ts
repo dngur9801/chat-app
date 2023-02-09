@@ -2,6 +2,7 @@ import {
   addDoc,
   collection,
   doc,
+  getDoc,
   getDocs,
   query,
   setDoc,
@@ -70,11 +71,8 @@ const authAPI = {
   // 해당하는 유저 정보 가져옴
   async getUser(uid: string) {
     try {
-      const q = query(
-        collection(db, this.collectionName),
-        where('uid', '==', uid)
-      );
-      return await getDocs(q);
+      const docRef = doc(db, 'users', uid);
+      return await getDoc(docRef);
     } catch (err: any) {
       console.error(err);
     }

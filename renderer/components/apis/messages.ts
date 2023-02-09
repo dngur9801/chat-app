@@ -2,19 +2,17 @@ import {
   addDoc,
   collection,
   doc,
-  DocumentData,
   getDoc,
   getDocs,
-  limit,
+  orderBy,
   query,
-  QueryDocumentSnapshot,
   where,
 } from 'firebase/firestore';
 import { db } from '../../config/firebaseConfig';
 import { getDate } from '../../utils';
 
 const messageAPI = {
-  collectionName: 'message',
+  collectionName: 'messages',
 
   // 메세지 생성
   async createMessage(
@@ -34,7 +32,7 @@ const messageAPI = {
           nickName,
         },
       });
-      const docRef = doc(db, 'message', messageRef.id);
+      const docRef = doc(db, this.collectionName, messageRef.id);
       return await getDoc(docRef);
     } catch (err) {
       console.error(err);
@@ -45,7 +43,8 @@ const messageAPI = {
     try {
       const q = query(
         collection(db, this.collectionName),
-        where('roomId', '==', roomId)
+        where('roomId', '==', roomId),
+        orderBy('timestamp', 'asc')
       );
       return await getDocs(q);
     } catch (err) {

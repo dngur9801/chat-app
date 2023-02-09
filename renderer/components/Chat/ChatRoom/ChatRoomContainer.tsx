@@ -1,39 +1,59 @@
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 import { useRecoilState } from 'recoil';
-import useMessageList from '../../../hook/useMessageList';
+import useFetchMessages from '../../../hook/useFetchMessages';
 import { userInfoState } from '../../../states';
-import messageAPI from '../../apis/message';
+import messageAPI from '../../apis/messages';
 import ChatRoom from './ChatRoom';
 
 function ChatRoomContainer() {
   const [content, setContent] = useState('');
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   const router = useRouter();
   const roomId = router.query.chatRoom;
 
-  const { messageList, setMessageList } = useMessageList(roomId as string);
-
-  console.log('messageList : ', messageList);
-
+  const { messageList, setMessageList } = useFetchMessages(roomId as string);
   const handleSubmitMessage = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
+    inputRef && inputRef.current?.focus();
+    setContent('');
+
     const message = await messageAPI.createMessage(
       content,
       userInfo?.uid as string,
       userInfo?.nickName as string,
       roomId as string
     );
+
     setMessageList([...(messageList as any), { ...message?.data() }]);
-    console.log('message : ', message?.data());
   };
+
+  const scrollToBottom = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messageList]);
+
   return (
     <ChatRoom
       handleSubmitMessage={handleSubmitMessage}
+      content={content}
       setContent={setContent}
       messageList={messageList}
+      inputRef={inputRef}
+      scrollRef={scrollRef}
     />
   );
 }

@@ -10,7 +10,7 @@ import * as S from './Users.styles';
 
 interface UsersProps {
   userList: IUserInfo[] | null;
-  handleClickCreateChat: (partnerUid: string, nickName: string) => void;
+  handleClickCreateChat: (partnerUid: string) => void;
 }
 
 function Users({ userList, handleClickCreateChat }: UsersProps) {
