@@ -11,6 +11,7 @@ interface CreateChatProps {
   checkedList: IUserInfo[];
   isDisabled: boolean;
   setSubject: React.Dispatch<React.SetStateAction<string>>;
+  handleClickCreateRoom: () => Promise<void>;
 }
 
 function CreateChat({
@@ -19,6 +20,7 @@ function CreateChat({
   checkedList,
   isDisabled,
   setSubject,
+  handleClickCreateRoom,
 }: CreateChatProps) {
   return (
     <>
@@ -52,7 +54,12 @@ function CreateChat({
             />
           ))}
         </S.CreateChatUserList>
-        <S.CreateChatComplete disabled={isDisabled}>완료</S.CreateChatComplete>
+        <S.CreateChatComplete
+          disabled={isDisabled}
+          onClick={() => handleClickCreateRoom()}
+        >
+          완료
+        </S.CreateChatComplete>
       </S.CreateChatLayout>
     </>
   );

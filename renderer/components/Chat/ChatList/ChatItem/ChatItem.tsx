@@ -1,24 +1,15 @@
 import React from 'react';
+import { IRoom, MoveChatRoomType } from '../../../../types';
 import { getRandomBgColor } from '../../../../utils';
 import * as S from './ChatItem.styles';
 
-interface ChatItemProps {
-  roomId: string;
-  roomType: string;
-  lastContent: string;
-  lastDate: string;
-  partnerNickName: string;
-  partnerAvatar: string;
-  handleClickMoveChatRoom: (
-    roomId: string,
-    type: string,
-    title: string
-  ) => void;
-}
+type ChatItemProps = IRoom & {
+  handleClickMoveChatRoom: MoveChatRoomType;
+};
 
 function ChatItem({
-  roomId,
-  roomType,
+  id,
+  type,
   lastContent,
   lastDate,
   partnerAvatar,
@@ -27,11 +18,13 @@ function ChatItem({
 }: ChatItemProps) {
   return (
     <S.ChatItemList
-      onClick={() => handleClickMoveChatRoom(roomId, roomType, partnerNickName)}
+      onClick={() =>
+        handleClickMoveChatRoom(id, type, partnerNickName as string)
+      }
     >
       <S.ChatItemItem>
-        <S.ChatItemProfileBox bgColor={partnerAvatar}>
-          {partnerNickName[0]}
+        <S.ChatItemProfileBox bgColor={partnerAvatar as string}>
+          {partnerNickName?.[0]}
         </S.ChatItemProfileBox>
         <S.ChatItemBox>
           <S.ChatItemNameText>{partnerNickName}</S.ChatItemNameText>

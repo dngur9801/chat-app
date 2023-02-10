@@ -17,7 +17,10 @@ function UsersContainer() {
 
   const handleClickCreateChat = async (partnerUid: string) => {
     try {
-      const roomId = await roomsAPI.createRoom(uid as string, partnerUid);
+      const roomId = await roomsAPI.createPersonalRoom(
+        uid as string,
+        partnerUid
+      );
       const user = await authAPI.getUser(partnerUid);
       const partnerName = user && user.data()?.nickName;
       router.push(`/chat/${roomId}?type=personal&title=${partnerName}`);

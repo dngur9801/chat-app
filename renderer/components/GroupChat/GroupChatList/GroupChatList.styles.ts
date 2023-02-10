@@ -8,4 +8,5 @@ export const GroupChatListCreateButton = styled.button`
   padding: 10px 20px;
   background-color: ${({ theme }) => theme.colors.basic};
   border-radius: 20px;
+  margin-bottom: 20px;
 `;

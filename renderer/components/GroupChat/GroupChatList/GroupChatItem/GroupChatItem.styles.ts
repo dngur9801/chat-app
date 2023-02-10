@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CreateChatInviteUserAvatar } from '../../Create/CreateChat.styles';
 
 export const GroupChatItemList = styled.ul`
   padding: 12px ${({ theme }) => theme.basicPadding};
@@ -13,12 +14,7 @@ export const GroupChatItem = styled.li`
   align-items: center;
 `;
 
-export const GroupChatItemProfileBox = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  background-color: red;
-`;
+export const GroupChatItemProfileBox = styled(CreateChatInviteUserAvatar)``;
 
 export const GroupChatItemBox = styled.div`
   flex: 1;

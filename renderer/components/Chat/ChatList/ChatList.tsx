@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { GENERAL_CHAT_TEXT } from '../../../constants';
-import { IRoom } from '../../../types';
+import { IRoom, MoveChatRoomType } from '../../../types';
 import Header from '../../Common/Header/Header';
 import NotResultMessage from '../../Common/NotResultMessage/NotResultMessage';
 import ChatItem from './ChatItem/ChatItem';
@@ -9,11 +9,7 @@ import * as S from './ChatList.styles';
 
 interface ChatListProps {
   chatRoomList: IRoom[] | null;
-  handleClickMoveChatRoom: (
-    roomId: string,
-    type: string,
-    title: string
-  ) => void;
+  handleClickMoveChatRoom: MoveChatRoomType;
 }
 function ChatList({ chatRoomList, handleClickMoveChatRoom }: ChatListProps) {
   return (
@@ -26,12 +22,7 @@ function ChatList({ chatRoomList, handleClickMoveChatRoom }: ChatListProps) {
         {chatRoomList?.map(item => (
           <ChatItem
             key={item.id}
-            roomId={item.id}
-            roomType={item.type}
-            lastContent={item.lastContent}
-            lastDate={item.lastDate}
-            partnerAvatar={item.partnerAvatar}
-            partnerNickName={item.partnerNickName}
+            {...item}
             handleClickMoveChatRoom={handleClickMoveChatRoom}
           />
         ))}

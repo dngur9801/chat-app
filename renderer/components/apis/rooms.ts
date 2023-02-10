@@ -14,12 +14,13 @@ import {
   where,
 } from 'firebase/firestore';
 import { db } from '../../config/firebaseConfig';
+import { getRandomBgColor } from '../../utils';
 
 const roomsAPI = {
   collectionName: 'rooms',
 
-  // 채팅방 생성
-  async createRoom(uid: string, partnerUid: string) {
+  // 1:1 채팅방 생성
+  async createPersonalRoom(uid: string, partnerUid: string) {
     try {
       const existRoomId = await this.findExistPersonalRoom(uid, partnerUid);
       if (existRoomId) return existRoomId;
@@ -93,15 +94,34 @@ const roomsAPI = {
   },
 
   // 진행중인 채팅방 가져옴
-  async getRooms(uid: string) {
+  async getRooms(uid: string, type: string) {
     try {
       const q = query(
         collection(db, this.collectionName),
-        where('users', 'array-contains', uid)
-        // where('type', '==', 'personal'),
-        // orderBy('date', 'desc')
+        where('users', 'array-contains', uid),
+        where('type', '==', type)
+        // orderBy('lastDate', 'desc')
       );
       return await getDocs(q);
+    } catch (err) {
+      console.error(err);
+    }
+  },
+
+  // 그룹 채팅방 생성
+  async createGroupRoom(uids: string[], subject: string) {
+    try {
+      const roomRef = await addDoc(collection(db, this.collectionName), {
+        users: uids,
+        type: 'group',
+        subject,
+        lastContent: '',
+        lastDate: '',
+        avatar: getRandomBgColor(),
+      });
+      await this.userIntoRoom(uids, roomRef);
+
+      return roomRef.id;
     } catch (err) {
       console.error(err);
     }

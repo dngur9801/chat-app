@@ -30,7 +30,15 @@ export interface IRoom {
   type: string;
   lastContent: string;
   lastDate: string;
-  partnerNickName: string;
-  partnerAvatar: string;
+  subject?: string;
+  avatar?: string;
+  partnerNickName?: string;
+  partnerAvatar?: string;
   users: string[];
 }
+
+export type MoveChatRoomType = (
+  roomId: string,
+  type: string,
+  title: string
+) => void;

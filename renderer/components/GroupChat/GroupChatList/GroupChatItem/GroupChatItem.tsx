@@ -1,19 +1,39 @@
 import React from 'react';
+import { IRoom, MoveChatRoomType } from '../../../../types';
 import * as S from './GroupChatItem.styles';
 
-function GroupChatItem() {
+type GroupChatItemProps = IRoom & {
+  totalPeople: number;
+  handleClickMoveChatRoom: MoveChatRoomType;
+};
+
+function GroupChatItem({
+  id,
+  subject,
+  lastContent,
+  lastDate,
+  avatar,
+  totalPeople,
+  handleClickMoveChatRoom,
+}: GroupChatItemProps) {
   return (
-    <S.GroupChatItemList>
+    <S.GroupChatItemList
+      onClick={() => handleClickMoveChatRoom(id, 'group', subject as string)}
+    >
       <S.GroupChatItem>
-        <S.GroupChatItemProfileBox></S.GroupChatItemProfileBox>
+        <S.GroupChatItemProfileBox bgColor={avatar as string}>
+          {subject?.[0]}
+        </S.GroupChatItemProfileBox>
         <S.GroupChatItemBox>
           <S.GroupChatItemNameBox>
-            <S.GroupChatItemNameText>카페 갈사람</S.GroupChatItemNameText>
-            <S.GroupChatItemTotalPeople>6</S.GroupChatItemTotalPeople>
+            <S.GroupChatItemNameText>{subject}</S.GroupChatItemNameText>
+            <S.GroupChatItemTotalPeople>
+              {totalPeople}
+            </S.GroupChatItemTotalPeople>
           </S.GroupChatItemNameBox>
-          <S.GroupChatItemMessageText>안녕하세요</S.GroupChatItemMessageText>
+          <S.GroupChatItemMessageText>{lastContent}</S.GroupChatItemMessageText>
         </S.GroupChatItemBox>
-        <S.GroupChatItemDate>2023.01.02</S.GroupChatItemDate>
+        <S.GroupChatItemDate>{lastDate.split(' ')[0]}</S.GroupChatItemDate>
       </S.GroupChatItem>
     </S.GroupChatItemList>
   );

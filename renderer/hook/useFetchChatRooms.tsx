@@ -4,7 +4,7 @@ import authAPI from '../components/apis/auth';
 import roomsAPI from '../components/apis/rooms';
 import { IRoom } from '../types';
 
-function useFetchChatRooms(myId: string) {
+function useFetchChatRooms(myId: string, type: string) {
   const [chatRoomList, setChatRoomList] = useState<IRoom[] | null>(null);
 
   const getPartnerInfo = async (room: IRoom) => {
@@ -18,7 +18,7 @@ function useFetchChatRooms(myId: string) {
 
   useEffect(() => {
     (async () => {
-      const getRooms = await roomsAPI.getRooms(myId);
+      const getRooms = await roomsAPI.getRooms(myId, type);
       const newChatRoomList: IRoom[] = [];
       getRooms?.forEach(docs => {
         const room = { ...docs.data(), id: docs.id } as IRoom;
