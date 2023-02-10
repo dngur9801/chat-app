@@ -23,7 +23,9 @@ function Message({
   const isMyMessage = userInfo?.uid === uid;
   return (
     <S.MessageLayout isMyMessage={isMyMessage}>
-      {!isMyMessage && <S.MessageImg></S.MessageImg>}
+      {!isMyMessage && (
+        <S.MessageImg bgColor={avartar}>{nickName[0]}</S.MessageImg>
+      )}
       <S.MessageBox>
         {!isMyMessage && <S.MessageUserName>{nickName}</S.MessageUserName>}
         <S.MessageMessageBox isMyMessage={isMyMessage}>

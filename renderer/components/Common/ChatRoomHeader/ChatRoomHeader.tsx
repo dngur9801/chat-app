@@ -4,7 +4,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 
 interface ChatRoomHeaderProps {
-  subject: string;
+  subject?: string;
 }
 
 function ChatRoomHeader({ subject }: ChatRoomHeaderProps) {

@@ -20,7 +20,6 @@ function ChatRoomContainer() {
   const roomId = router.query.chatRoom;
 
   const { messageList, setMessageList } = useFetchMessages(roomId as string);
-
   const handleSubmitMessage = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
@@ -32,7 +31,8 @@ function ChatRoomContainer() {
       content,
       userInfo?.uid as string,
       userInfo?.nickName as string,
-      roomId as string
+      roomId as string,
+      userInfo?.avatar
     );
     await roomsAPI.setLastContent(
       roomId as string,

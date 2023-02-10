@@ -99,8 +99,8 @@ const roomsAPI = {
       const q = query(
         collection(db, this.collectionName),
         where('users', 'array-contains', uid),
-        where('type', '==', type)
-        // orderBy('lastDate', 'desc')
+        where('type', '==', type),
+        orderBy('lastDate', 'desc')
       );
       return await getDocs(q);
     } catch (err) {

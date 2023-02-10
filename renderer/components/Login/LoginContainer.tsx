@@ -38,6 +38,7 @@ function LoginContainer() {
         email: userData.user.email as string,
         nickName: userData.user?.email?.split('@')[0] as string,
         rooms: user && user.data()?.rooms,
+        avatar: user && user.data()?.avatar,
       });
       router.push('/users');
     } catch (err: any) {

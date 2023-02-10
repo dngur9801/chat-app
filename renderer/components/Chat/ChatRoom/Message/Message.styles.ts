@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { CreateChatInviteUserAvatar } from '../../../GroupChat/Create/CreateChat.styles';
 
 export const MessageLayout = styled.li<{ isMyMessage: boolean }>`
   display: flex;
@@ -6,12 +7,7 @@ export const MessageLayout = styled.li<{ isMyMessage: boolean }>`
   flex-direction: ${({ isMyMessage }) => (isMyMessage ? 'row-reverse' : 'row')};
 `;
 
-export const MessageImg = styled.div`
-  width: 45px;
-  height: 45px;
-  border-radius: 100%;
-  background-color: green;
-`;
+export const MessageImg = styled(CreateChatInviteUserAvatar)``;
 
 export const MessageBox = styled.div`
   display: flex;

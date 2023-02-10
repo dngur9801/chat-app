@@ -19,7 +19,8 @@ const messageAPI = {
     content: string,
     uid: string,
     nickName: string,
-    roomId: string
+    roomId: string,
+    avatar: string
   ) {
     try {
       const messageRef = await addDoc(collection(db, this.collectionName), {
@@ -27,7 +28,7 @@ const messageAPI = {
         content,
         date: getDate(),
         user: {
-          avartar: '',
+          avartar: avatar,
           uid,
           nickName,
         },
