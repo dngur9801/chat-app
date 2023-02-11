@@ -6,8 +6,6 @@ import authAPI from '../apis/auth';
 import Users from './Users';
 import roomsAPI from '../apis/rooms';
 import { useRouter } from 'next/router';
-import { DocumentData, DocumentSnapshot } from 'firebase/firestore';
-import { IUserInfo } from '../../types';
 
 function UsersContainer() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);

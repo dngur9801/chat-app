@@ -1,6 +1,5 @@
 import React from 'react';
 import { IUserInfo } from '../../../types';
-import { getRandomBgColor } from '../../../utils';
 import ChatRoomHeader from '../../Common/ChatRoomHeader/ChatRoomHeader';
 import * as S from './CreateChat.styles';
 import UserItem from './UserItem/UserItem';

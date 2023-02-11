@@ -1,7 +1,6 @@
 import React from 'react';
 import { IMessage } from '../../../types';
 import ChatRoomHeader from '../../Common/ChatRoomHeader/ChatRoomHeader';
-import GoBackButton from '../../Common/ChatRoomHeader/ChatRoomHeader';
 import * as S from './ChatRoom.styles';
 import Message from './Message/Message';
 

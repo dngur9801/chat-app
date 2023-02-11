@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { auth } from '../../../config/firebaseConfig';
 import { toastMessageState, userInfoState } from '../../../states';
 import ToastMessage from '../ToastMessage/ToastMessage';
 import * as S from './Layout.styles';

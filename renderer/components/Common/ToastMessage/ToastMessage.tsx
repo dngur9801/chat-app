@@ -9,7 +9,7 @@ const delay = 400;
 const ToastMessage = () => {
   const [toastMessage, setToastMessage] = useRecoilState(toastMessageState);
   const [animation, setAnimation] = useState<
-    'openAnimation' | 'closeAnimation'
+    'openAnimation' | 'closeAnimation' | null
   >('openAnimation');
 
   useEffect(() => {
