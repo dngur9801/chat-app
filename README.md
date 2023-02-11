@@ -55,7 +55,8 @@ firebase 특성상 실시간으로 데이터변화를 감지할 수 있는 기�
 - 이메일 형식, 비밀번호 6자리 유효성 검사를 진행 하였습니다.
 
 <div>
-  <img src="./images/signup.gif"/>
+  <img src="./images/signup.gif" style="width:300px;"/>
+  <img src="./images/login.gif" style="width:300px;"/>
 </div>
 
 <br/>
