@@ -64,20 +64,37 @@ firebase 특성상 실시간으로 데이터변화를 감지할 수 있는 기�
 ### 1:1 채팅
 - 실시간으로 1:1채팅을 진행할 수 있습니다.
 
+<div>
+  <img src="./images/1-1_chat.gif" style="width:600px;"/>
+</div>
 
 <br/>
 
 ### 그룹 채팅
 - 실시간으로 그룹 채팅을 진행할 수 있습니다.
 
+<div>
+  <img src="./images/group_chat.gif" style="width:900px;"/>
+</div>
+
 <br/>
 
 ### 그룹 채팅방 생성
 - 유저를 초대해서 그룹 채팅방을 생성할 수 있습니다.
 
+<div>
+  <img src="./images/create_group_chat.gif" style="width:300px;"/>
+</div>
+
 <br/>
 ### 유저 목록, 채팅 리스트, 그룹 채팅 리스트
 - Chatty를 이용중인 유저를 조회할 수 있고, 현재 진행중인 1:1 채팅, 그룹 채팅 리스트를 확인할 수 있습니다.
+
+<div>
+  <img src="./images/user_list.png" style="width:300px;"/>
+  <img src="./images/1-1_chat_list.png" style="width:300px;"/>
+  <img src="./images/group_chat_list.png" style="width:300px;"/>
+</div>
 
 
 
