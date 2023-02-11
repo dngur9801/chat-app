@@ -10,16 +10,11 @@ import {
   SETTING_TEXT,
   CHAT_PATH,
 } from '../../../constants';
+import { MenuList } from '../../../types';
 
 import Layout from './Layout';
 
 export type ChildrenType = React.ReactNode;
-
-export type MenuList = {
-  title: string;
-  path: string;
-  icon: () => JSX.Element;
-};
 
 interface LayoutContainerProps {
   children: ChildrenType;
@@ -48,8 +43,20 @@ const menuList: MenuList[] = [
   },
 ];
 
+const hiddenMenuPath = [
+  '/login',
+  '/signup',
+  '/chat/[chatRoom]',
+  '/group-chat/create',
+  '/home',
+];
+
 function LayoutContainer({ children }: LayoutContainerProps) {
-  return <Layout menuList={menuList}>{children}</Layout>;
+  return (
+    <Layout menuList={menuList} hiddenMenuPath={hiddenMenuPath}>
+      {children}
+    </Layout>
+  );
 }
 
 export default LayoutContainer;

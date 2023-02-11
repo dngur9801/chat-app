@@ -15,7 +15,7 @@ if (isProd) {
   await app.whenReady();
 
   const mainWindow = createWindow('main', {
-    width: 390,
+    width: 450,
     height: 670,
   });
 
@@ -24,7 +24,7 @@ if (isProd) {
   } else {
     const port = process.argv[2];
     await mainWindow.loadURL(`http://localhost:${port}/home`);
-    mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
   }
 
   electronLocalshortcut.register(mainWindow, 'F12', () => {

@@ -20,6 +20,7 @@ export const GroupChatItemBox = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   padding-left: 20px;
 `;
 
@@ -31,6 +32,9 @@ export const GroupChatItemNameBox = styled.div`
 export const GroupChatItemNameText = styled.span`
   font-weight: ${({ theme }) => theme.fontWeights.lg};
   font-size: ${({ theme }) => theme.fontSizes.base};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const GroupChatItemTotalPeople = styled(GroupChatItemNameText)`
@@ -41,6 +45,9 @@ export const GroupChatItemTotalPeople = styled(GroupChatItemNameText)`
 export const GroupChatItemMessageText = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.small};
   color: #909090;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const GroupChatItemDate = styled.div`

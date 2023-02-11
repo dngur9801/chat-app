@@ -2,24 +2,19 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { toastMessageState, userInfoState } from '../../../states';
+import { MenuList } from '../../../types';
 import ToastMessage from '../ToastMessage/ToastMessage';
 import * as S from './Layout.styles';
-import { ChildrenType, MenuList } from './LayoutContainer';
+import { ChildrenType } from './LayoutContainer';
 import Menu from './Menu/Menu';
 
 interface LayoutProps {
   children: ChildrenType;
   menuList: MenuList[];
+  hiddenMenuPath: string[];
 }
 
-const hiddenMenuPath = [
-  '/login',
-  '/signup',
-  '/chat/[chatRoom]',
-  '/group-chat/create',
-];
-
-function Layout({ children, menuList }: LayoutProps) {
+function Layout({ children, menuList, hiddenMenuPath }: LayoutProps) {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
   const [errorMessage, setErrorMessage] = useRecoilState(toastMessageState);
   const { pathname } = useRouter();

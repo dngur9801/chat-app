@@ -1,14 +1,10 @@
 import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import { ipcRenderer } from 'electron';
+import LoginContainer from '../components/Login/LoginContainer';
 
 function Home() {
   return (
     <>
-      <Link href='/login'>
-        <a>Go to next login</a>
-      </Link>
+      <LoginContainer />
     </>
   );
 }
