@@ -3,18 +3,18 @@ Nextron, firebase를 사용해서 구현한 데스크탑 채팅 애플리케이�
 firebase 특성상 실시간으로 데이터변화를 감지할 수 있는 기능을 제공하고, NoSQL 형식 으로 대량의 분산된 데이터를 저장하고 조회하는 데 특화돼 있어서 채팅 애플리케이션을 제작하는데 적합합니다.
 
 ## 목차
-- 전체 구조
-- 주요 기능
-- 기술 스택
-- 구현 내용
-- 회고
-- 실행 방법
+- [전체 구조](#1)
+- [주요 기능](#2)
+- [기술 스택](#3)
+- [구현 내용](#4)
+- [회고](#5)
+- [실행 방법](#6)
 
 
 <br/><br/>
 
 
-## 전체 구조
+## 전체 구조 <a id="1"></a>
 - recoil을 사용하여 전역상태 관리를 하였습니다.
 - component 폴더에는 각각 페이지에 해당하는 컴포넌트들이 위치해 있고, 하나의 컴포넌트 폴더 내부에는 다음과 같은 파일들이 있습니다.
   - [component].tsx : 컴포넌트에 ui부분을 담당합니다.
@@ -25,7 +25,7 @@ firebase 특성상 실시간으로 데이터변화를 감지할 수 있는 기�
 <br/><br/>
 
 
-## 주요 기능
+## 주요 기능 <a id="2"></a>
 - [x] 회원가입
 - [x] 로그인
 - [x] 유저목록
@@ -35,7 +35,7 @@ firebase 특성상 실시간으로 데이터변화를 감지할 수 있는 기�
 
 <br/><br/>
 
-## 기술 스택
+## 기술 스택 <a id="3"></a>
 <div>
  <img src="https://img.shields.io/badge/NextJs-000000?style=flat-square&logo=next.js&logoColor=white">&nbsp 
  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/></a>&nbsp 
@@ -48,7 +48,7 @@ firebase 특성상 실시간으로 데이터변화를 감지할 수 있는 기�
 
 <br/><br/>
 
-## 구현 내용
+## 구현 내용 <a id="4"></a>
 
 ### 회원가입, 로그인
 - firebase Authentication을 이용해서 구현 하였습니다.
@@ -102,13 +102,13 @@ firebase 특성상 실시간으로 데이터변화를 감지할 수 있는 기�
 <br/><br/>
 
 
-## 회고
+## 회고 <a id="5"></a>
 - 웹으로만 프로젝트를 진행해 왔어서 Electron을 사용한 데스크탑 앱을 처음 진행한 프로젝트였는데 오로지 데스크탑 앱을 띄운거 이외에는 다룬 기술들이 없는 것 같습니다. Electron이 가지고 있는 기능들을 더욱 공부할 필요가 있어보입니다.
 - firebase를 이용하여 서버를 따로 구축할 필요가 없어서 빠른시간안에 프로젝트를 완성할 수 있었습니다. 특히 로그인 인증을 위해 복잡한 로직을 구성해야 하지만 firebase에서 이러한 기능들도 제공하고 있어서 firebase에 장점이 크게 와닿았습니다. 
 
 <br/><br/>
 
-## 실행 방법
+## 실행 방법 <a id="6"></a>
 1. 프로젝트를 클론합니다.
 ```
 git clone https://github.com/dngur9801/chat-app.git
