@@ -138,4 +138,6 @@ NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=""
 npm run dev
 ```
 
-
+## 프로젝트 진행중 마주친 이슈와 해결
+- https://velog.io/@dngur9801/firebase-Error-adding-document-FirebaseError-7-PERMISSIONDENIED-Missing-or-insufficient-permissions.-%EC%97%90%EB%9F%AC-%ED%95%B4%EA%B2%B0
+- https://velog.io/@dngur9801/Nextron-F12%EB%A5%BC-%EB%88%8C%EB%9F%AC%EC%84%9C-%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%8F%84%EA%B5%AC-%ED%99%9C%EC%84%B1%ED%99%94-%ED%95%98%EA%B8%B0
